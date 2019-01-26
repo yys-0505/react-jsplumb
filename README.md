@@ -1,4 +1,4 @@
-# preview
+# Preview
 
 https://yys-0505.github.io/react-jsplumb/build/index.html
 
