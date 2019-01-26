@@ -1,28 +1,47 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Layout, Spin } from 'antd';
+import { HashRouter as Router } from 'react-router-dom';
+import { connect } from 'react-redux';
+import './assets/css/App.css';
+import PageHeader from "./components/layout/PageHeader";
+import PageSider from "./components/layout/PageSider/";
+import PageBread from "./components/layout/PageBread/";
+import PageContent from "./components/layout/PageContent";
+
 
 class App extends Component {
+  constructor (props) {
+    super(props);
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <Layout>
+          <PageHeader />
+          <Layout>
+              <PageSider />
+              <Layout style={{ padding: '0 24px 0' }}>
+                {/* <PageBread /> */}
+                <PageContent />
+              </Layout>
+          </Layout>
+          <div className="spinning-wrapper" style={{display: this.props.showLoading?'block':'none'}}>
+            <Spin spinning={true} tip="Loading..." size="large"></Spin>
+          </div>
+        </Layout>
+      </Router>
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    showLoading: state.getIn(["page", "showLoading"])
+  }
+}
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

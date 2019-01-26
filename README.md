@@ -1,3 +1,7 @@
+# preview
+
+https://yys-0505.github.io/react-jsplumb/build/index.html
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
