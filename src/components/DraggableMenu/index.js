@@ -32,7 +32,7 @@ class DraggableMenu extends Component {
    */
   getTaskList () {
     if (!this.props.tasks.length) {
-      http.get("/data/taskList.json").then(res => {
+      http.get("./data/taskList.json").then(res => {
         this.props.saveTask(res);
         this.makeItemDraggable();
       });
